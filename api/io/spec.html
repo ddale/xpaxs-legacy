@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>xpaxs.io.spec &mdash; XPaXS v0.10.0 documentation</title>
+    <link rel="stylesheet" href="../../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../static/jquery.js"></script>
+    <script type="text/javascript" src="../../static/underscore.js"></script>
+    <script type="text/javascript" src="../../static/doctools.js"></script>
+    <link rel="top" title="XPaXS v0.10.0 documentation" href="../../index.html" />
+    <link rel="up" title="XPaXS IO API" href="index.html" />
+    <link rel="next" title="Glossary" href="../../glossary.html" />
+    <link rel="prev" title="Introduction" href="introduction.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../glossary.html" title="Glossary"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Application Programming Interface</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">XPaXS IO API</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="introduction.html"
+                        title="previous chapter">Introduction</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../../glossary.html"
+                        title="next chapter">Glossary</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../../sources/api/io/spec.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="module-xpaxs.io.spec">
+<span id="xpaxs-io-spec"></span><h1><a class="reference internal" href="#module-xpaxs.io.spec" title="xpaxs.io.spec"><tt class="xref py py-mod docutils literal"><span class="pre">xpaxs.io.spec</span></tt></a><a class="headerlink" href="#module-xpaxs.io.spec" title="Permalink to this headline">¶</a></h1>
+<p>specfile is an interface to datafiles created by Certified
+Scientific&#8217;s spec program, which is commonly used in synchrotron labs.
+pychess.specfile extends an established esrf library called SpecFile, which
+is written in C, so it is very fast.</p>
+<p>Use:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">scanList</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s">&#39;example.dat&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Each scan contains the data and a scan_info attribute for accessing information
+stored in the scan header, like motor positions, scan parameters, etc.</p>
+<dl class="function">
+<dt id="xpaxs.io.spec.load">
+<tt class="descclassname">xpaxs.io.spec.</tt><tt class="descname">load</tt><big>(</big><em>filename</em>, <em>*scans</em>, <em>**kwargs</em><big>)</big><a class="headerlink" href="#xpaxs.io.spec.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a list of scans.</p>
+<dl class="docutils">
+<dt>filename:</dt>
+<dd>a string</dd>
+<dt>scans:</dt>
+<dd>integers indicatng which scans to load. If no scans are indicated,
+load every scan in the file.</dd>
+</dl>
+<p>Examples:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">scanList</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s">&quot;example.dat&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">scan1</span><span class="p">,</span> <span class="n">scan5</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="s">&quot;example.dat&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>If no scan indices are given, returns every scan present in the file. Each
+scan contains the data and a scan_info attribute for accessing information
+stored in the scan header.</p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../../glossary.html" title="Glossary"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="introduction.html" title="Introduction"
+             >previous</a> |</li>
+        <li><a href="../../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="../index.html" >Application Programming Interface</a> &raquo;</li>
+          <li><a href="index.html" >XPaXS IO API</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, Darren Dale.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>

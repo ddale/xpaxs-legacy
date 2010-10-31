@@ -1,0 +1,214 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; XPaXS v0.10.0 documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="XPaXS v0.10.0 documentation" href="../index.html" />
+    <link rel="up" title="User’s Guide" href="index.html" />
+    <link rel="next" title="Why Python?" href="why_python.html" />
+    <link rel="prev" title="User’s Guide" href="index.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="why_python.html" title="Why Python?"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="User’s Guide"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Installation</a><ul>
+<li><a class="reference internal" href="#developer-s-installation">Developer&#8217;s installation</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="index.html"
+                        title="previous chapter">User&#8217;s Guide</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="why_python.html"
+                        title="next chapter">Why Python?</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/users/installation.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>XPaXS requires several packages in order to run. Many of these
+packages can be easily installed on Linux using the distribution&#8217;s
+package manager, which will also take care of dependencies. Note
+to windows users: you need to install the 32-bit python and 32-bit
+package installers, and you may need to run .exe files as
+administrator (just right-click on them and choose &#8220;run as
+Administrator&#8221;). Check that you have the following installed:</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://www.python.org/">Python</a> (version 2.6 on windows, 2.6 or 2.7 for linux/mac)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/distribute">Distribute</a> (version 0.6.10 or later)
+or Setuptools (0.6c9 or later) <a class="footnote-reference" href="#f1" id="id1">[1]</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/PyQt">PyQt4</a> (version 4.5.2 or later) <a class="footnote-reference" href="#f2" id="id2">[2]</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/numpy">NumPy</a> (version 1.2.0 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/PyMca">PyMca</a> (version 4.4.0 or later) <a class="footnote-reference" href="#f3" id="id3">[3]</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/matplotlib">matplotlib</a> (0.98.3 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/pp">ParallelPython</a> (version 1.6.0 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/h5py">h5py</a> (1.3.0 or later) <a class="footnote-reference" href="#f4" id="id4">[4]</a></li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/phynx">phynx</a> (0.11.0 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/xpaxs">XPaXS</a></li>
+</ol>
+<p>To install XPaXS on OS X or Linux, download the source, unpack it, and
+run the following in the source directory:</p>
+<div class="highlight-python"><pre>python setup.py build &amp;&amp; sudo python setup.py install</pre>
+</div>
+<div class="section" id="developer-s-installation">
+<h2>Developer&#8217;s installation<a class="headerlink" href="#developer-s-installation" title="Permalink to this headline">¶</a></h2>
+<p>XPaXS developers may also want to install:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://git-scm.com">git</a> (version 2.0.0 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/Sphinx">Sphinx</a> (version 1.0.4 or later)</li>
+<li><a class="reference external" href="http://pypi.python.org/pypi/nose">nose</a> (version 0.11 or later)</li>
+</ul>
+<p>You can follow and contribute to XPaXS&#8217; development by obtaining a
+bzr version control branch with the following command:</p>
+<div class="highlight-python"><pre>git clone git://github.com/darrendale/xpaxs-legacy.git</pre>
+</div>
+<p>That will create an xpaxs project directory for you. Python will
+run code right from that directory if you run the following command:</p>
+<div class="highlight-python"><pre>python setup.py develop --user</pre>
+</div>
+<p>then periodically bring your branch up to date:</p>
+<div class="highlight-python"><pre>git pull</pre>
+</div>
+<p>and the changes are immediately available to you without having to
+reinstall anything.</p>
+<p>Bugs, feature requests, and questions can be directed to the
+<a class="reference external" href="http://github.com/darrendale/xpaxs-legacy">xpaxs development page</a>.</p>
+<p class="rubric">Footnotes</p>
+<table class="docutils footnote" frame="void" id="f1" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Distribute is a fork of the setuptools project. Some Linux
+package managers have not transitioned from setuptools to
+distribute. XPaXS will also work with setuptools.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>May require installing <a class="reference external" href="http://qt.nokia.com/">Qt</a> on Mac, and development tools
+like pyqt4-dev and pyqt4-dev-tools through the package manager on
+Linux.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td>Windows users, please install
+the file that includes the python version in the name: e.g.
+PyMca-4.4.0.win32-py2.6.exe. Mac and linux users please install
+from source: e.g. pymca4.4.0-src.tgz.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="f4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id4">[4]</a></td><td>May require installing hdf5-1.8.3 or later on lLnux and OS X,
+and development libraries like libhdf5-dev through the package
+manager on linux.</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="why_python.html" title="Why Python?"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="index.html" title="User’s Guide"
+             >previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, Darren Dale.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>

@@ -1,0 +1,185 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>phynx &mdash; XPaXS v0.10.0 documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="XPaXS v0.10.0 documentation" href="../index.html" />
+    <link rel="up" title="User’s Guide" href="index.html" />
+    <link rel="next" title="Developer’s Guide" href="../developers/index.html" />
+    <link rel="prev" title="Why Python?" href="why_python.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../developers/index.html" title="Developer’s Guide"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="why_python.html" title="Why Python?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">phynx</a><ul>
+<li><a class="reference internal" href="#introduction">Introduction</a></li>
+<li><a class="reference internal" href="#exporting-data">Exporting data</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="why_python.html"
+                        title="previous chapter">Why Python?</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="../developers/index.html"
+                        title="next chapter">Developer&#8217;s Guide</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/users/phynx.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="phynx">
+<h1>phynx<a class="headerlink" href="#phynx" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Phynx is a high-level interface to HDF5 files, using the h5py bindings to the
+the HDF5 library. HDF5 is an open-source binary format designed for scientific
+data, it allows you to organize your data in an hierarchy similar to a
+filesystem. It is fair to think of HDF5 as a file system for large, complex
+data. Phynx provides access to such datasets without storing the entire file in
+memory, thus it is easy to work with multi-gigabyte files on a computer with
+limited RAM.</p>
+<p>Phynx offers additional object oriented routines designed to make it easier to
+work with the kind of data generated at synchrotron labs. Its organization is
+inspired in part by the <a class="reference external" href="http://www.nexusformat.org">NeXus</a> format. The NeXus application programming
+interface is somewhat onerous on both the developer and the user, and the
+standard NeXus hierarchy is in some ways too cumbersome and constrictive for
+many applications. Nevertheless, the NeXus project has the laudable goal of
+bridging the gap between experimental and theoretical research initiatives, and
+phynx does not intend to subvert the NeXus project. Rather, phynx is designed to
+provide a simple organization for synchrotron data, around which the standard
+NeXus hierarchy and full instrument definition can be built at a later time, if
+so desired. The phynx routines are designed to provide an interface to your data
+that is hopefully intuitive and simple to use.</p>
+</div>
+<div class="section" id="exporting-data">
+<h2>Exporting data<a class="headerlink" href="#exporting-data" title="Permalink to this headline">¶</a></h2>
+<p>Naturally, you will feel more comfortable storing your data in the HDF5 format
+if you understand how to get it back out. Imagine you have a file with the
+following standard format:</p>
+<div class="highlight-python"><pre>mydata.h5
+  /entry_1/measurement/scalar_data/motor_1
+                                   motor_2
+                                   ion_chamber_1
+                      /MCA/counts
+                           deadtime</pre>
+</div>
+<p>and you want to export channels 500-550 of the first three MCA spectra to an
+ASCII text file. You can do so with the following simple python code, which can
+be run as a script or in an interactive session:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">xpaxs.io.phynx</span> <span class="kn">import</span> <span class="n">File</span>
+<span class="kn">import</span> <span class="nn">numpy</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">File</span><span class="p">(</span><span class="s">&#39;mydata.h5&#39;</span><span class="p">)</span>
+<span class="n">mca_spectra</span> <span class="o">=</span> <span class="n">f</span><span class="p">[</span><span class="s">&#39;/entry_1/measurement/MCA/counts&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">500</span><span class="p">:</span><span class="mi">551</span><span class="p">]</span>
+<span class="n">numpy</span><span class="o">.</span><span class="n">savetxt</span><span class="p">(</span><span class="s">&#39;mca_spectra.txt&#39;</span><span class="p">,</span> <span class="n">mca_spectra</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s">&#39;</span><span class="si">%g</span><span class="s">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Since we didnt need any of phynx special features, I could have done
+<cite>from h5py import File</cite> instead.</p>
+<p>If you don&#8217;t know how to run a python script, try reading the <a class="reference external" href="http://docs.python.org/tutorial/">tutorial</a> at the
+<a class="reference external" href="http://www.python.org">python website</a>. For working with data interactively, have a look at the
+<a class="reference external" href="http://ipython.scipy.org">IPython</a> package. If you don&#8217;t know what <cite>fmt=&#8217;%g&#8217;</cite> meant, you can find an
+explanation in the python documentation for <a class="reference external" href="http://docs.python.org/library/stdtypes.html#string-formatting">string formatting</a>.</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../developers/index.html" title="Developer’s Guide"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="why_python.html" title="Why Python?"
+             >previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, Darren Dale.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>

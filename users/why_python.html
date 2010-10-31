@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Why Python? &mdash; XPaXS v0.10.0 documentation</title>
+    <link rel="stylesheet" href="../static/sphinxdoc.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.10.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <link rel="top" title="XPaXS v0.10.0 documentation" href="../index.html" />
+    <link rel="up" title="User’s Guide" href="index.html" />
+    <link rel="next" title="phynx" href="phynx.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="phynx.html" title="phynx"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" accesskey="U">User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="installation.html"
+                        title="previous chapter">Installation</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="phynx.html"
+                        title="next chapter">phynx</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../sources/users/why_python.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" size="18" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="why-python">
+<h1>Why Python?<a class="headerlink" href="#why-python" title="Permalink to this headline">¶</a></h1>
+<p>Matlab claims to be &#8220;The Language of Technical Computing&#8221;. It really is a nice
+collection of software. I learned how to program using Matlab, in order to
+settle a controversy relating to my graduate research project. As it turns out,
+I no longer use Matlab. There are two reasons: 1) Matlab is expensive, and once
+you begin developing tools using Matlab, you can quickly become committed to a
+big, long-term investment and 2) Python is much more pleasant to work with.
+The expressiveness, flexibility, and elegance are, in the opinion of many
+programmers, the most compelling reasons to use Python.</p>
+<p>Scientific computing is currently undergoing something of a Renaissance in the
+Python community. It is now possible to create a compelling alternative to
+Matlab using NumPy, SciPy, IPython, Matplotlib, and a GUI toolkit like PyQt4.
+There are many really high-quality python libraries available, for example,
+PyTables manages extremely large datasets by interfacing with the standardized
+hdf5 libraries, SymPy provides symbolic manipulation, VTK provides 3D
+visualization, and PyMol is a popular molecular visualization system which is
+frequently used to render the atomic structure of macro-molecules like proteins.</p>
+<p>I think it is important to use and contribute to open source software,
+especially in the pursuit of science funded by the public. This speaks more
+broadly to the current state of scientific publishing, where the public pays for
+grants for scientific research, and then pay again to get access to the results
+of that research in an academic publication. I think it is important to maintain
+a degree of independence, and to have a sense of familiarity with the tools we
+depend upon. And finally, it has been my experience that open-source software
+development is an extremely efficient and successful, and results in the
+highest quality code. Eric Raymond makes a good case for the open-source
+development model in his book &#8220;The Cathedral and the Bazaar&#8221;.</p>
+<p>It takes much less time to develop and debug a program in Python than it would
+in a compiled language. It is true that some routines in Python are slow
+compared to compiled languages like C, but it is also true that once you
+understand a few Python idioms you can avoid many performance bottlenecks. Some
+cases still arise where you really need to squeeze every ounce of performance
+out of your hardware, and in that case you can implement a specific algorithm in
+a compiled in something like C and then wrap the resulting library for use from
+python. So in response to the question &#8220;Why Python?&#8221;, my initial reaction is
+&#8220;why would anyone want to use anything else?&#8221;.</p>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="../np-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="phynx.html" title="phynx"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="installation.html" title="Installation"
+             >previous</a> |</li>
+        <li><a href="../index.html">XPaXS v0.10.0 documentation</a> &raquo;</li>
+          <li><a href="index.html" >User&#8217;s Guide</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2009, Darren Dale.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.0.4.
+    </div>
+  </body>
+</html>
