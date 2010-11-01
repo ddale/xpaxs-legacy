@@ -8,7 +8,7 @@ import logging
 import time
 
 import numpy as np
-import pp
+# import pp
 from PyQt4 import QtCore, QtGui
 
 from .ui import ui_ppjobstats
@@ -23,24 +23,24 @@ class PPJobStats(ui_ppjobstats.Ui_PPJobStats, QtGui.QWidget):
         super(PPJobStats, self).__init__(parent)
         self.setupUi(self)
 
-        try:
-            self.server = pp.Server(ppservers=('*', ))
-        except ValueError:
-            # this should not be necessary with pp-1.5.6 and later:
-            secret = hashlib.md5(str(time.time())).hexdigest()
-            self.server = pp.Server(
-                ppservers=('*', ), secret=secret
-            )
-        self.numCpusSpinBox.setMaximum(self.server.get_ncpus())
+        # try:
+        #             self.server = pp.Server(ppservers=('*', ))
+        #         except ValueError:
+        #             # this should not be necessary with pp-1.5.6 and later:
+        #             secret = hashlib.md5(str(time.time())).hexdigest()
+        #             self.server = pp.Server(
+        #                 ppservers=('*', ), secret=secret
+        #             )
+        # self.numCpusSpinBox.setMaximum(self.server.get_ncpus())
 
         self.updateTable()
 
         self.connect(self.refreshButton,
                      QtCore.SIGNAL("clicked()"),
                      self.updateTable)
-        self.connect(self.numCpusSpinBox,
-                     QtCore.SIGNAL("valueChanged(int)"),
-                     self.server.set_ncpus)
+        # self.connect(self.numCpusSpinBox,
+        #              QtCore.SIGNAL("valueChanged(int)"),
+        #              self.server.set_ncpus)
         self.connect(self.numCpusSpinBox,
                      QtCore.SIGNAL("valueChanged(int)"),
                      self.updateLocalProcesses)
@@ -61,7 +61,8 @@ class PPJobStats(ui_ppjobstats.Ui_PPJobStats, QtGui.QWidget):
                           QtCore.QVariant(val))
 
     def updateTable(self, statsDict=None):
-        if statsDict is None: statsDict = self.server.get_stats()
+        if statsDict is None: return
+        # if statsDict is None: statsDict = self.server.get_stats()
 
         totalJobs = np.sum([i.njobs for i in statsDict.itervalues()])
 

@@ -158,6 +158,7 @@ class ElementPlotFigure(ElementBaseFigure):
             self.axes.set_xlim(self._x_data.range)
         except:
             self._elementPlot, = self.axes.plot(self._elementData)
+        self._ylims = list(self.axes.get_ylim())
 
     def enableAutoscale(self, val):
         self.axes.set_autoscale_on(val)

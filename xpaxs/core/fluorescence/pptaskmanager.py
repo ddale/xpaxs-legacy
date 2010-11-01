@@ -8,7 +8,6 @@ import sys
 import time
 
 import numpy as np
-import pp
 from PyMca import ClassMcaTheory
 from PyMca.ConcentrationsTool import ConcentrationsTool
 import numpy as np

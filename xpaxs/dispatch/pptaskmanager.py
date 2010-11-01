@@ -6,11 +6,11 @@ import copy
 import gc
 import hashlib
 import logging
+import multiprocessing
 import threading
 import time
 
-import pp
-#from PyQt4 import QtCore
+#import pp
 import numpy as np
 np.seterr(all='ignore')
 
@@ -81,16 +81,18 @@ class PPTaskManager(threading.Thread):
         self.progress_queue = progress_queue
         self.job_queue = []
 
-        self._job_server = pp.Server(ppservers=('*',))
+        #self._job_server = pp.Server(ppservers=('*',))
 
-        n_cpus = self.job_server.get_ncpus()
+        #n_cpus = self.job_server.get_ncpus()
+        self._n_cpus = n_cpus = multiprocessing.cpu_count()
         n_local_processes = kwargs.get('n_local_processes', n_cpus)
-        self.job_server.set_ncpus(n_local_processes)
+        #self.job_server.set_ncpus(n_local_processes)
+        self._job_server = multiprocessing.Pool(n_local_processes)
 
         # total cpus, including local and remote:
-        self._n_cpus = np.sum(
-            [i for i in self.job_server.get_active_nodes().itervalues()]
-        )
+        #self._n_cpus = np.sum(
+        #    [i for i in self.job_server.get_active_nodes().itervalues()]
+        #)
 
         self.__stopped = False
 
@@ -115,7 +117,8 @@ class PPTaskManager(threading.Thread):
         #self.job_server.wait()
         while True:
             try:
-                res = self.job_queue.pop(0)()
+                #res = self.job_queue.pop(0)()
+                res = self.job_queue.pop(0).get()
                 if res is not None:
                     self.update_records(res)
             except IndexError:
@@ -138,9 +141,10 @@ class PPTaskManager(threading.Thread):
 
             if item:
                 f, args = item
-                job = self.job_server.submit(
-                    f, args, modules=("time", )
-                    )
+                #job = self.job_server.submit(
+                #    f, args, modules=("time", )
+                #    )
+                job = self.job_server.apply_async(f, args)
                 self.job_queue.append(job)
 
             self.n_processed += 1
@@ -153,7 +157,8 @@ class PPTaskManager(threading.Thread):
             self.flush()
 
     def queue_results(self):
-        stats = copy.deepcopy(self.job_server.get_stats())
+        # stats = copy.deepcopy(self.job_server.get_stats())
+        stats = {}
         stats['n_processed'] = self.n_processed
         self.progress_queue.put(stats)
 
