@@ -115,16 +115,24 @@ class PPTaskManager(threading.Thread):
 
     def flush(self):
         #self.job_server.wait()
+        res = None
         while True:
             try:
                 #res = self.job_queue.pop(0)()
                 res = self.job_queue.pop(0).get()
                 if res is not None:
                     self.update_records(res)
+                else:
+                    print "ayah"
             except IndexError:
                 break
         self.n_submitted = 0
-        self.queue_results()
+        if res is not None:
+            stats = {
+                'n_processed': self.n_processed,
+                'localhost': res['report'],
+                }
+            self.progress_queue.put(stats)
 
     def process_data(self):
         for item in self:
@@ -156,10 +164,8 @@ class PPTaskManager(threading.Thread):
         if self.n_submitted > 0:
             self.flush()
 
-    def queue_results(self):
-        # stats = copy.deepcopy(self.job_server.get_stats())
-        stats = {}
-        stats['n_processed'] = self.n_processed
+    def queue_results(self, stats):
+        # stats = copy.deepcopy(self.job_server.get_stats()
         self.progress_queue.put(stats)
 
     def run(self):

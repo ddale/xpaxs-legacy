@@ -64,7 +64,7 @@ class PPJobStats(ui_ppjobstats.Ui_PPJobStats, QtGui.QWidget):
         if statsDict is None: return
         # if statsDict is None: statsDict = self.server.get_stats()
 
-        totalJobs = np.sum([i.njobs for i in statsDict.itervalues()])
+        totalJobs = statsDict.pop('n_processed')
 
         self.jobStatsTable.setUpdatesEnabled(False)
         self.jobStatsTable.clearContents()
@@ -74,31 +74,33 @@ class PPJobStats(ui_ppjobstats.Ui_PPJobStats, QtGui.QWidget):
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             self.jobStatsTable.setItem(row, 0, item)
 
-            item = QtGui.QTableWidgetItem(str(stats.ncpus))
-            item.setTextAlignment(QtCore.Qt.AlignCenter)
-            self.jobStatsTable.setItem(row, 1, item)
+            # item = QtGui.QTableWidgetItem(str(stats.ncpus))
+            # item.setTextAlignment(QtCore.Qt.AlignCenter)
+            # self.jobStatsTable.setItem(row, 1, item)
 
-            item = QtGui.QTableWidgetItem(str(stats.njobs))
+            # item = QtGui.QTableWidgetItem(str(stats.njobs))
+            item = QtGui.QTableWidgetItem(str(totalJobs))
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             self.jobStatsTable.setItem(row, 2, item)
 
-            try:
-                item = QtGui.QTableWidgetItem('%.2f'%(100.*stats.njobs/totalJobs))
-                item.setTextAlignment(QtCore.Qt.AlignCenter)
-                self.jobStatsTable.setItem(row, 3, item)
-            except ZeroDivisionError:
-                pass
+            # try:
+            #     item = QtGui.QTableWidgetItem('%.2f'%(100.*stats.njobs/totalJobs))
+            #     item.setTextAlignment(QtCore.Qt.AlignCenter)
+            #     self.jobStatsTable.setItem(row, 3, item)
+            # except ZeroDivisionError:
+            #     pass
 
-            item = QtGui.QTableWidgetItem('%.2f'%stats.time)
+            time = sum([i for i in stats.itervalues()])
+            item = QtGui.QTableWidgetItem('%.2f'%time)
             item.setTextAlignment(QtCore.Qt.AlignCenter)
             self.jobStatsTable.setItem(row, 4, item)
 
-            try:
-                item = QtGui.QTableWidgetItem('%.4f'%(stats.time/stats.njobs))
-                item.setTextAlignment(QtCore.Qt.AlignCenter)
-                self.jobStatsTable.setItem(row, 5, item)
-            except ZeroDivisionError:
-                pass
+            # try:
+            #     item = QtGui.QTableWidgetItem('%.4f'%(stats.time/stats.njobs))
+            #     item.setTextAlignment(QtCore.Qt.AlignCenter)
+            #     self.jobStatsTable.setItem(row, 5, item)
+            # except ZeroDivisionError:
+            #     pass
 
         self.jobStatsTable.resizeColumnsToContents()
         self.jobStatsTable.resizeRowsToContents()

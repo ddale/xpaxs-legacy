@@ -427,7 +427,7 @@ class McaAnalysisWindow(Ui_McaAnalysisWindow, AnalysisWindow):
 
         self.elementMapUpdated()
 
-        n_processed = item.pop('n_processed')
+        n_processed = item['n_processed']
         progress = int((100.0 * n_processed) / self.n_points)
         self.progressBar.setValue(progress)
         self.ppJobStats.updateTable(item)
